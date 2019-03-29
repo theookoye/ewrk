@@ -89,10 +89,7 @@ router.post('/', (req, res) => {
 		// Push data to firestore
 
 		db.collection('emergencies')
-			.add({
-				disaster,
-				location
-			})
+			.add(emergency)
 			.then(docRef => {
 				console.log('Document written with ID: ', docRef.id);
 			})
