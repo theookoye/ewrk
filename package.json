@@ -1,0 +1,33 @@
+{
+  "name": "ewrk",
+  "version": "1.0.0",
+  "description": "early warning & rescue kit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Conceptx/ewrk.git"
+  },
+  "keywords": [
+    "Early",
+    "Warning",
+    "Rescue",
+    "Zimbabwe"
+  ],
+  "author": "Theophilus Okoye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Conceptx/ewrk/issues"
+  },
+  "homepage": "https://github.com/Conceptx/ewrk#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "firebase": "^5.9.2",
+    "morgan": "^1.9.1",
+    "pusher": "^2.2.0"
+  }
+}
