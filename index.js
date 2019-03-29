@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 
+// Route imports
+const emergency = require('./routes/emergency');
+
 // Express app instance
 const app = express();
 
@@ -20,7 +23,7 @@ const config = {
 firebase.initializeApp(config);
 const db = firebase.firestore();
 
-// Middleware
+// Express Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
@@ -30,9 +33,8 @@ app.use(
 );
 app.use(morgan('dev'));
 
-app.get('/test', (req, res) => {
-	res.send({ success: true });
-});
+// Routes
+app.use('/emergency', emergency);
 
 const port = process.env.PORT || 3000;
 
