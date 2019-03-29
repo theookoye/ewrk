@@ -42,7 +42,7 @@ let emergency = {
 	location: ''
 };
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 	// USSD server for options
 	console.log(req.body);
 	let message = '';
@@ -86,14 +86,7 @@ router.post('/', (req, res) => {
 	try {
 		// Push data to firestore
 
-		db.collection('emergencies')
-			.add(emergency)
-			.then(docRef => {
-				console.log('Document written with ID: ', docRef.id);
-			})
-			.catch(error => {
-				console.error('Error adding document: ', error);
-			});
+		const docRef = await db.collection('emergencies').add(emergency);
 
 		res.contentType('text/plain');
 		res.status(200).send(message);
