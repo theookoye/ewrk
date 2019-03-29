@@ -40,11 +40,11 @@ const start = `CON Select Disaster:
 router.post('/', (req, res) => {
 	// USSD server for options
 	console.log(req.body);
-    let message = '',
-    const emergency = {
-        disaster : '',
-        location: ''
-    }
+	let message = '';
+	const emergency = {
+		disaster: '',
+		location: ''
+	};
 	const { sessionId, serviceCode, phoneNumber, text } = req.body;
 	const textValue = text.split('*').length;
 
@@ -54,26 +54,26 @@ router.post('/', (req, res) => {
 			case 1:
 				switch (text.split('*')[1]) {
 					case 1:
-                    emergency.disaster = 'flood';
-						
+						emergency.disaster = 'flood';
+
 						break;
 					case 2:
-                    emergency.disaster = 'wild fire';
+						emergency.disaster = 'wild fire';
 						break;
 					case 3:
-                    emergency.disaster = 'landslide';
+						emergency.disaster = 'landslide';
 						break;
 					case 4:
-                    emergency.disaster = 'rockslide';
+						emergency.disaster = 'rockslide';
 						break;
 					case 5:
-                    emergency.disaster = 'drought';
+						emergency.disaster = 'drought';
 						break;
 					case 6:
-                    emergency.disaster = 'heat wave';
+						emergency.disaster = 'heat wave';
 						break;
 					case 7:
-                    emergency.disaster = 'epidemic';
+						emergency.disaster = 'epidemic';
 						break;
 				}
 				message = `CON Enter location : `;
