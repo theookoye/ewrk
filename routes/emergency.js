@@ -49,41 +49,36 @@ router.post('/', (req, res) => {
 	const textValue = text.split('*').length;
 
 	if (text === '') message = start;
-	else
-		switch (textValue) {
-			case 1:
-				switch (text.split('*')[0]) {
-					case 1:
-						emergency.disaster = 'flood';
+	else if (textValue === 1) {
+		message = `CON Enter location : `;
+	} else {
+		message = `END  Assistance is on its way.`;
+	}
 
-						break;
-					case 2:
-						emergency.disaster = 'wild fire';
-						break;
-					case 3:
-						emergency.disaster = 'landslide';
-						break;
-					case 4:
-						emergency.disaster = 'rockslide';
-						break;
-					case 5:
-						emergency.disaster = 'drought';
-						break;
-					case 6:
-						emergency.disaster = 'heat wave';
-						break;
-					case 7:
-						emergency.disaster = 'epidemic';
-						break;
-				}
-				message = `CON Enter location : `;
-				break;
-			case 2:
-				emergency.location = text.split('*')[1];
-				console.log(text.split('*'));
-				message = `END Be strong, Assistance is on its way.`;
-				break;
-		}
+	switch (text.split('*')[0]) {
+		case 1:
+			emergency.disaster = 'flood';
+
+			break;
+		case 2:
+			emergency.disaster = 'wild fire';
+			break;
+		case 3:
+			emergency.disaster = 'landslide';
+			break;
+		case 4:
+			emergency.disaster = 'rockslide';
+			break;
+		case 5:
+			emergency.disaster = 'drought';
+			break;
+		case 6:
+			emergency.disaster = 'heat wave';
+			break;
+		case 7:
+			emergency.disaster = 'epidemic';
+			break;
+	}
 
 	try {
 		// Push data to firestore
