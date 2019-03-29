@@ -53,6 +53,7 @@ router.post('/', (req, res) => {
 				switch (text.split('*')[1]) {
 					case 1:
 						disaster = 'flood';
+						console.log(disaster);
 						break;
 					case 2:
 						disaster = 'wild fire';
