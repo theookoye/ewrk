@@ -85,11 +85,17 @@ router.post('/', async (req, res) => {
 
 	try {
 		// Push data to firestore
-
-		const docRef = await db.collection('emergencies').add(emergency);
+		if (emergency.disaster != '' && emergency.location != '') {
+			const docRef = await db.collection('emergencies').add(emergency);
+			console.log(docRef.id);
+		}
 
 		res.contentType('text/plain');
 		res.status(200).send(message);
+
+		// Reset data object
+		emergency.disaster = '';
+		emergency.location = '';
 	} catch (error) {
 		console.log(error);
 	}
