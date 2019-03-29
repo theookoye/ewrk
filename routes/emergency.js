@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
 	// USSD server for options
 	console.log(req.body);
 	let message = '';
-	const emergency = {
+	let emergency = {
 		disaster: '',
 		location: ''
 	};
@@ -58,7 +58,6 @@ router.post('/', (req, res) => {
 	switch (text.split('*')[0]) {
 		case 1:
 			emergency.disaster = 'flood';
-
 			break;
 		case 2:
 			emergency.disaster = 'wild fire';
@@ -79,6 +78,7 @@ router.post('/', (req, res) => {
 			emergency.disaster = 'epidemic';
 			break;
 	}
+	console.log(`emergency: ${emergency}`);
 
 	try {
 		// Push data to firestore
