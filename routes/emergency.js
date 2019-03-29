@@ -54,6 +54,7 @@ router.post('/', (req, res) => {
 	else if (textValue === 1) {
 		message = `CON Enter location : `;
 	} else {
+		emergency['location'] = text.split('*')[1];
 		message = `END  Assistance is on its way.`;
 	}
 
