@@ -39,6 +39,7 @@ const start = `CON Select Disaster:
 
 router.post('/', (req, res) => {
 	// USSD server for options
+	console.log(req.body);
 	let [message, disaster, location] = ['', '', ''];
 	const { sessionId, serviceCode, phoneNumber, text } = req.body;
 	const textValue = text.split('*').length;
