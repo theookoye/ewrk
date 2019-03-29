@@ -58,25 +58,25 @@ router.post('/', (req, res) => {
 	}
 
 	switch (text.split('*')[0]) {
-		case 1:
+		case '1':
 			emergency['disaster'] = 'flood';
 			break;
-		case 2:
+		case '2':
 			emergency['disaster'] = 'wild fire';
 			break;
-		case 3:
+		case '3':
 			emergency['disaster'] = 'landslide';
 			break;
-		case 4:
+		case '4':
 			emergency['disaster'] = 'rockslide';
 			break;
-		case 5:
+		case '5':
 			emergency['disaster'] = 'drought';
 			break;
-		case 6:
+		case '6':
 			emergency['disaster'] = 'heat wave';
 			break;
-		case 7:
+		case '7':
 			emergency['disaster'] = 'epidemic';
 			break;
 	}
