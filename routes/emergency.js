@@ -40,9 +40,11 @@ const start = `CON Select Disaster:
 router.post('/', (req, res) => {
 	// USSD server for options
 	console.log(req.body);
-	let message = '',
-		disaster = '',
-		location = '';
+    let message = '',
+    const emergency = {
+        disaster : '',
+        location: ''
+    }
 	const { sessionId, serviceCode, phoneNumber, text } = req.body;
 	const textValue = text.split('*').length;
 
@@ -52,42 +54,38 @@ router.post('/', (req, res) => {
 			case 1:
 				switch (text.split('*')[1]) {
 					case 1:
-						disaster = 'flood';
-						console.log(disaster);
+                    emergency.disaster = 'flood';
+						
 						break;
 					case 2:
-						disaster = 'wild fire';
+                    emergency.disaster = 'wild fire';
 						break;
 					case 3:
-						disaster = 'landslide';
+                    emergency.disaster = 'landslide';
 						break;
 					case 4:
-						disaster = 'rockslide';
+                    emergency.disaster = 'rockslide';
 						break;
 					case 5:
-						disaster = 'drought';
+                    emergency.disaster = 'drought';
 						break;
 					case 6:
-						disaster = 'heat wave';
+                    emergency.disaster = 'heat wave';
 						break;
 					case 7:
-						disaster = 'epidemic';
+                    emergency.disaster = 'epidemic';
 						break;
 				}
 				message = `CON Enter location : `;
 				break;
 			case 2:
-				location = text.split('*')[2];
+				emergency.location = text.split('*')[2];
+				console.log(text.split('*'));
 				message = `END Be strong, Assistance is on its way.`;
 				break;
 		}
 
 	try {
-		pusher.trigger('emergency-calls', 'emergency', {
-			location,
-			disaster
-		});
-
 		// Push data to firestore
 
 		db.collection('emergencies')
