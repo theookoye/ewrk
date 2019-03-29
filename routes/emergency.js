@@ -3,6 +3,7 @@ const router = express.Router();
 const Pusher = require('pusher');
 const credentials = require('../cred');
 const africastalking = require('africastalking')(credentials.AT);
+const firebase = require('firebase');
 
 // Global Variables
 const pusher = new Pusher({
@@ -12,6 +13,19 @@ const pusher = new Pusher({
 	cluster: 'ap2',
 	useTLS: true
 });
+
+// Firebase instance
+const config = {
+	apiKey: 'AIzaSyDeivRAXdWUWAi2IVYOM9-IrJHbzl1oXRE',
+	authDomain: 'ewrk2019.firebaseapp.com',
+	databaseURL: 'https://ewrk2019.firebaseio.com',
+	projectId: 'ewrk2019',
+	storageBucket: 'ewrk2019.appspot.com',
+	messagingSenderId: '998235068240'
+};
+
+firebase.initializeApp(config);
+const db = firebase.firestore();
 
 const start = `CON Select Disaster:
 1. Flood
