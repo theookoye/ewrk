@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
 	else
 		switch (textValue) {
 			case 1:
-				switch (text.split('*')[1]) {
+				switch (text.split('*')[0]) {
 					case 1:
 						emergency.disaster = 'flood';
 
@@ -79,7 +79,7 @@ router.post('/', (req, res) => {
 				message = `CON Enter location : `;
 				break;
 			case 2:
-				emergency.location = text.split('*')[2];
+				emergency.location = text.split('*')[1];
 				console.log(text.split('*'));
 				message = `END Be strong, Assistance is on its way.`;
 				break;
